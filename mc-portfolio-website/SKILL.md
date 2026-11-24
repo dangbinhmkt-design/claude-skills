@@ -40,6 +40,20 @@ Không dựng và xử lý trang trong Elementor nữa. Dựng thẳng bằng co
 - Khung cắt: đặt style lên chính khối bọc ảnh (width, aspect-ratio, overflow hidden), ảnh bên trong dùng object-fit cover, object-position, transform scale.
 - Thumbnail chương trình, album và mục Khoảnh khắc có thể không có công cụ cắt. Phải nói rõ trong hướng dẫn.
 
+### Plugin bổ sung (mã nguồn ở `plugins/`)
+- `mclt-video-hero`: đổi clip nổi bật trang Video (menu MC Lê Tam, Clip nổi bật). Có sẵn lớp phủ gradient và text-shadow cho phần chú thích để chữ không chìm vào ảnh, và CSS mobile cho thẻ video (nhãn nằm trên tiêu đề, tiêu đề tối đa 3 dòng).
+- `mclt-home-videos`: đổi 5 video trang chủ (1 lớn `.lt-vbig`, 4 nhỏ `.lt-vsmall`, theo thứ tự trong DOM). Ô trống thì giữ nguyên video cũ.
+- `mclt-booking`: form đặt lịch thay khối CTA cuối trang (`.lt-ctawrap > .e-con-inner`), mọi nút CTA và nút menu trỏ về `#dat-lich`. Lưu bằng post type `mclt_booking`, báo email (To và CC trong Đặt lịch MC, Cài đặt), có honeypot và giới hạn 5 lượt mỗi giờ theo IP.
+- Plugin chính `mcletam-portfolio` (v1.15.0) gồm nhiều file (programs, footer, moments, tablet, mobile, reviews, partners, editor.js, assets). Bản đầy đủ nằm trong file sao lưu .wpress, không để ở repo này.
+
+### Quy trình vận hành trên site khách
+- LiteSpeed Cache giữ HTML cũ sau khi sửa plugin. Cách xóa nhanh: lưu một form cài đặt có gọi `do_action('litespeed_purge_all')`. Khi kiểm tra bằng fetch, thêm tham số chống cache.
+- Sửa PHP plugin ngay trên site: mở Plugin File Editor, đặt nội dung bằng CodeMirror `setValue`, rồi bấm `document.getElementById('submit').click()` (không dùng `form.submit()` vì bị ô tên "submit" che mất). Tắt hộp thoại "Leave site" bằng `onbeforeunload=null`.
+- Kiểm tra mobile bằng iframe cùng nguồn rộng 390px.
+- Công cụ JS của Chrome chặn kết quả giống URL, query hoặc base64. Muốn lấy mã nguồn từ trình soạn thảo plugin: thay `=`, `?`, `&` bằng ký tự khác rồi đọc từng đoạn khoảng 1000 ký tự, ghép lại, đối chiếu SHA-256.
+- Sau mỗi tính năng mới phải cập nhật Google Doc hướng dẫn (bảng đầu trang, bảng nhớ nhanh 5.4) và xuất lại PDF: dùng Drive `download_file_content` với `exportMimeType` application/pdf, rồi `create_file` với tham chiếu file sha256 để tải lên cùng thư mục.
+- Bản test của form đặt lịch tạo bản ghi thật trong WordPress. Không tự xóa nếu Anh chưa cho phép.
+
 ## 4. Quy tắc responsive (rút từ feedback của Anh trên bản đã dựng)
 Breakpoint: mobile `max-width:767px`, tablet 768 đến 1100px, desktop trên 1100px. Mọi quy tắc mobile bọc trong `@media(max-width:767px)`.
 
@@ -92,7 +106,7 @@ Breakpoint: mobile `max-width:767px`, tablet 768 đến 1100px, desktop trên 11
 - Nếu cần bản Elementor, chỉ xuất file `.json` từng trang SAU KHI Anh duyệt.
 
 ## 6. Hướng dẫn sử dụng cho khách
-1. Viết bằng ngôn ngữ đời thường, chia phần theo việc khách muốn làm: Bắt đầu, sửa chữ và ảnh, thêm hoặc sửa chương trình, thêm clip YouTube, đổi ảnh Khoảnh khắc và logo đối tác, ẩn hoặc xóa nội dung.
+1. Viết bằng ngôn ngữ đời thường, chia phần theo việc khách muốn làm: Bắt đầu, sửa chữ và ảnh, thêm hoặc sửa chương trình, thêm clip YouTube, đổi clip nổi bật và video trang chủ, form đặt lịch, đổi ảnh Khoảnh khắc và logo đối tác, ẩn hoặc xóa nội dung.
 2. Mỗi phần có ảnh chụp màn hình thật, in đậm tên nút, in nghiêng ghi chú, bảng tra nhanh "Bạn muốn... / Làm ở đâu / Xem phần".
 3. Phần ảnh chia nhỏ Phần A đến D (kích thước, vị trí, khung cắt, đặt lại), có ví dụ trước và sau.
 4. Giao hai bản: Google Doc và PDF, lưu vào thư mục Drive Anh chỉ định.
