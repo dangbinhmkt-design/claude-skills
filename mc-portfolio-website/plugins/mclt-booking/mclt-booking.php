@@ -104,14 +104,14 @@ add_action('wp_footer', function () {
     foreach (MCLT_BK_TYPES as $t) $opts .= '<option' . ($t === $pre ? ' selected' : '') . '>' . esc_html($t) . '</option>';
     ?>
 <style id="mclt-bk-css">
-#dat-lich{scroll-margin-top:110px}
+#dat-lich{scroll-margin-top:84px}
 .lt-ctawrap{background:linear-gradient(180deg,#3e5d7a 0,#3e5d7a 50%,#223b52 50%,#223b52 100%)}
 .mclt-bk{background:#fff;border-radius:36px;box-shadow:0 24px 60px rgba(33,51,71,.18);padding:56px;display:flex;gap:64px;width:100%;box-sizing:border-box;font-family:'Montserrat',sans-serif;color:#3e5d7a}
 .mclt-bk *{box-sizing:border-box}
 .mclt-bk-intro{flex:0 0 380px}
 .mclt-bk-eb{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.14em;color:#607e97;text-transform:uppercase;margin-bottom:20px}
 .mclt-bk-eb i{color:#e8863a;font-style:normal;letter-spacing:0}.mclt-bk-eb b{display:block;width:28px;height:1px;background:#e8863a}
-.mclt-bk h2{font-size:34px;line-height:42px;font-weight:500;letter-spacing:-.02em;color:#3e5d7a;margin:0 0 20px}
+.mclt-bk h2{font-size:30px;line-height:38px;text-wrap:balance;font-weight:500;letter-spacing:-.02em;color:#3e5d7a;margin:0 0 20px}
 .mclt-bk-intro p{font-size:16px;line-height:26px;color:#5f7488;margin:0 0 24px}
 .mclt-bk-steps{list-style:none;margin:0;padding:12px 0 0;display:flex;flex-direction:column;gap:20px}
 .mclt-bk-steps li{display:flex;gap:16px;align-items:flex-start}
@@ -135,7 +135,7 @@ add_action('wp_footer', function () {
 .mclt-bk-ok{display:none;flex:1;flex-direction:column;justify-content:center;gap:12px}
 .mclt-bk-ok h3{font-size:28px;font-weight:500;color:#3e5d7a;margin:0}.mclt-bk-ok p{font-size:16px;line-height:26px;color:#5f7488;margin:0}
 .mclt-bk.done .mclt-bk-form{display:none}.mclt-bk.done .mclt-bk-ok{display:flex}
-@media(max-width:1100px){.mclt-bk{gap:40px;padding:44px}.mclt-bk-intro{flex-basis:300px}.mclt-bk h2{font-size:28px;line-height:36px}}
+@media(max-width:1100px){.mclt-bk{gap:40px;padding:44px}.mclt-bk-intro{flex-basis:300px}.mclt-bk h2{font-size:26px;line-height:34px}}
 @media(max-width:767px){
 .lt-ctawrap{padding-left:0!important;padding-right:0!important}
 .mclt-bk{flex-direction:column;gap:14px;padding:22px;border-radius:28px}
@@ -150,7 +150,7 @@ add_action('wp_footer', function () {
 <div class="mclt-bk" id="dat-lich">
   <div class="mclt-bk-intro">
     <div class="mclt-bk-eb"><i>✦</i><b></b>Đặt lịch MC</div>
-    <h2>Gửi thông tin để Lê Tam tư vấn lịch dẫn</h2>
+    <h2>Gửi thông tin để Lê&nbsp;Tam tư vấn lịch dẫn</h2>
     <p>Anh/chị để lại thông tin cơ bản và mô tả nhanh chương trình. Lê Tam sẽ xem lịch rồi liên hệ lại với anh/chị.</p>
     <ol class="mclt-bk-steps">
       <li><em>1</em><div><strong>Gửi thông tin</strong><span>Họ tên, số điện thoại và ngày dự kiến tổ chức.</span></div></li>

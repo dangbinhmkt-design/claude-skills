@@ -49,6 +49,8 @@ Không dựng và xử lý trang trong Elementor nữa. Dựng thẳng bằng co
 ### Quy trình vận hành trên site khách
 - LiteSpeed Cache giữ HTML cũ sau khi sửa plugin. Cách xóa nhanh: lưu một form cài đặt có gọi `do_action('litespeed_purge_all')`. Khi kiểm tra bằng fetch, thêm tham số chống cache.
 - Sửa PHP plugin ngay trên site: mở Plugin File Editor, đặt nội dung bằng CodeMirror `setValue`, rồi bấm `document.getElementById('submit').click()` (không dùng `form.submit()` vì bị ô tên "submit" che mất). Tắt hộp thoại "Leave site" bằng `onbeforeunload=null`.
+- Menu cố định: giữ thấp (desktop khoảng 68px, mobile khoảng 47px), vì menu dày làm trang nặng mắt. Chỉnh bằng CSS trong ô MC Lê Tam, CSS giao diện.
+- Văn bản có cụm "Lê Tam" phải dùng `&nbsp;` giữa hai chữ để không bị ngắt dòng. Cẩn thận `text-wrap: balance` kết hợp nhiều `&nbsp;`: dòng bị bó hẹp, chừa trống bên phải. Với đoạn mô tả ở footer mobile dùng `text-wrap: pretty`.
 - Kiểm tra mobile bằng iframe cùng nguồn rộng 390px.
 - Công cụ JS của Chrome chặn kết quả giống URL, query hoặc base64. Muốn lấy mã nguồn từ trình soạn thảo plugin: thay `=`, `?`, `&` bằng ký tự khác rồi đọc từng đoạn khoảng 1000 ký tự, ghép lại, đối chiếu SHA-256.
 - Sau mỗi tính năng mới phải cập nhật Google Doc hướng dẫn (bảng đầu trang, bảng nhớ nhanh 5.4) và xuất lại PDF: dùng Drive `download_file_content` với `exportMimeType` application/pdf, rồi `create_file` với tham chiếu file sha256 để tải lên cùng thư mục.
